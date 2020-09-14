@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    # By placing the account app over every app we ensure that our authentication templates will be used by default instead of any other authentication templates contained in other apps.
+    # Django looks for templates by order of appearance in the INSTALLED_APPS setting.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
