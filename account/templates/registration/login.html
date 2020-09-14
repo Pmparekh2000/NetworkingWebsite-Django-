@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Login-In</h1>
+    <!-- The default LoginView passes the form in the render method -->
+    {% if form.errors %}
+        <p>
+            Your Username and password didn't match.
+            Please try again
+        </p>
+    {% else %}
+        <p>Please, use the following form to login</p>    
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="POST">
+            <!-- The above action is used to check the form in the view of login -->
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <!-- The "next" parameter is a url parameter. When we pass the "next" parameter, we tell Django to redirect us the particular url address on successful "login" -->
+            <p><input type="submit" value="Log-In"></p>
+        </form>
+    </div>
+{% endblock content %}
+    

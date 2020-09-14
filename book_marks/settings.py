@@ -121,3 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'dashboard'
+# The above url is triggered once login is successfull
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
