@@ -8,7 +8,8 @@
 
 {% block content %}
     <h1>Log-In</h1>
-    <p>Please, use the following form to log-in</p>
+    <!-- <p>dvsv</p> -->
+    <p>Please, use the following form to log-in. If you don't have an account <a href="{% url 'register' %}">Register here</a></p>
     <form action="." method="POST">
         {{ form.as_p }}
         <!-- HTML fields for the above forms are created by Django itself -->
