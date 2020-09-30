@@ -55,6 +55,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    # Note over here the order of backends matters. If the same credentials are valid for multiple backends, then Django will stop at the first backend that successfully authenticates the user
+]
+
 ROOT_URLCONF = 'book_marks.urls'
 
 TEMPLATES = [
