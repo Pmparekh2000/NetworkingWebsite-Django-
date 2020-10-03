@@ -26,7 +26,7 @@ SECRET_KEY = 'l(=k^!vd)4t1#go*es@3i@t3tqpr$t1x=w!he%+uz=)lnqg1q9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # The above line indicates the class used to send emails
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,9 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
     # Note over here the order of backends matters. If the same credentials are valid for multiple backends, then Django will stop at the first backend that successfully authenticates the user
@@ -138,3 +142,10 @@ LOGOUT_URL = 'logout'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SOCIAL_AUTH_FACEBOOK_KEY = '367370444307118' # Facebook App Id
+SOCIAL_AUTH_FACEBOOK_SECRET = '0a7a25a4be82ea8ef87a2996c14597d8' # Facebook App secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '329404503370-le1qdqafggt41fn50jlth89iikju4ive.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'GIc5Le2f9yGj_Mh3Txi2qvex'
