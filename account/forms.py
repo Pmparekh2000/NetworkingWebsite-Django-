@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -26,6 +29,12 @@ class UserEditForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 class ProfileEditForm(forms.ModelForm):
+    # If we are not using model fields then follow the below
+    # my_date_field = forms.DateField(widget=DateInput)
     class Meta:
         model = Profile
         fields = ('date_of_birth', 'photo')
+        widgets = {
+            'date_of_birth': DateInput()
+            # We need to instantiate
+        }
